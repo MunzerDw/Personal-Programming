@@ -18,6 +18,9 @@ process.env.GH_TOKEN = token
 autoUpdater.on('update-downloaded', (info) => {
     win.webContents.send('updateReady')
 });
+autoUpdater.on('update-available', (info) => {
+  win.webContents.send('updateReady')
+});
 app.on('ready', function() {
   createDefaultWindow();
   autoUpdater.checkForUpdates();
