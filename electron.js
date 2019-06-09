@@ -9,6 +9,11 @@ function createDefaultWindow() {
   return win;
 }
 
+var decryptedToken = "8bb2a881eae8230171munzeristhebest3eef7f23849a598ea2e96a";
+var token = decryptedToken.replace('munzeristhebest', '')
+
+process.env.GH_TOKEN = token
+
 // when the update is ready, notify the BrowserWindow
 autoUpdater.on('update-downloaded', (info) => {
     win.webContents.send('updateReady')
