@@ -13,6 +13,9 @@
         "build": "build --win",
         "ship": "build --win -p always"
     },
+    "build": {
+        "asar": false
+    },
     "devDependencies": {
         "electron": "^1.7.5",
         "electron-builder": "^19.20.1"
