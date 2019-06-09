@@ -9,18 +9,19 @@ function createDefaultWindow() {
   return win;
 }
 
-var decryptedToken = "8bb2a881eae8230171munzeristhebest3eef7f23849a598ea2e96a";
-var token = decryptedToken.replace('munzeristhebest', '')
-
-process.env.GH_TOKEN = token
-
 // when the update is ready, notify the BrowserWindow
 autoUpdater.on('update-downloaded', (info) => {
     win.webContents.send('updateReady')
 });
 autoUpdater.on('update-available', (info) => {
-  win.webContents.send('updateReady')
+  win.webContents.send('updateReadyStatus')
 });
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  win.webContents.send('updateProgress', log_message)
+})
 app.on('ready', function() {
   createDefaultWindow();
   autoUpdater.checkForUpdates();
