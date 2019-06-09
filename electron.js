@@ -8,7 +8,7 @@ function createDefaultWindow() {
     win.on('closed', () => app.quit());
   return win;
 }
-
+process.env.GH_TOKEN = "fa2e973157674a032daf2806f58df0f408e1206a"
 // when the update is ready, notify the BrowserWindow
 autoUpdater.on('update-downloaded', (info) => {
     win.webContents.send('updateReady')
