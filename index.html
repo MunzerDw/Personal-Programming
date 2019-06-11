@@ -24,6 +24,15 @@
             var container = document.getElementById('ready');
             container.innerHTML = progress;
         })
+
+        const os = require('os');
+        const storage = require('electron-json-storage');
+        storage.set('foo.bar', true);
+        storage.get('foo.bar', function(error, data) {
+            if (error) throw error;
+
+            console.log(data);
+        });
     </script>
     Version(s): <span id="version">v0.1.15</span>
     <!-- the button onClick sends a quitAndInstall message to the electron main process -->

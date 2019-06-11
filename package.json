@@ -5,11 +5,14 @@
     "homepage": "./",
     "description": "An example of an autoupdating electron app",
     "repository": "https://github.com/MunzerDw/Personal-Programming",
-    "main": "electron.js",
+    "main": "ui.js",
     "dependencies": {
-        "electron-updater": "^2.18.2"
+        "electron-json-storage": "^4.1.6",
+        "electron-updater": "^2.18.2",
+        "os": "^0.1.1"
     },
     "scripts": {
+        "start": "electron ui.js",
         "build": "build --win",
         "ship": "build --win -p always"
     },
